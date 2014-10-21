@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EPLoginViewController.h
 //  EzyParking
 //
 //  Created by Ben Zhang on 10/21/14.
@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface ViewController : UIViewController
-
+@interface EPLoginViewController : UIViewController
 
 @end
-
