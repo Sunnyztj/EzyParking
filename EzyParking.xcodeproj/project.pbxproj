@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A69FE9F19F67D0F0086AD74 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A69FE9E19F67D0F0086AD74 /* FacebookSDK.framework */; };
+		3A69FEA219F6982C0086AD74 /* EPMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A69FEA119F6982C0086AD74 /* EPMainViewController.m */; };
 		3AA2C84F19F6659800819443 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2C84E19F6659800819443 /* main.m */; };
 		3AA2C85219F6659800819443 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2C85119F6659800819443 /* AppDelegate.m */; };
 		3AA2C85519F6659800819443 /* EzyParking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2C85319F6659800819443 /* EzyParking.xcdatamodeld */; };
@@ -32,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		3A69FE9E19F67D0F0086AD74 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3A69FEA019F6982C0086AD74 /* EPMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPMainViewController.h; path = Controller/EPMainViewController.h; sourceTree = "<group>"; };
+		3A69FEA119F6982C0086AD74 /* EPMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPMainViewController.m; path = Controller/EPMainViewController.m; sourceTree = "<group>"; };
 		3AA2C84919F6659800819443 /* EzyParking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EzyParking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA2C84D19F6659800819443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA2C84E19F6659800819443 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -150,6 +153,8 @@
 			children = (
 				3AA2C87A19F6789600819443 /* EPLoginViewController.h */,
 				3AA2C87B19F6789600819443 /* EPLoginViewController.m */,
+				3A69FEA019F6982C0086AD74 /* EPMainViewController.h */,
+				3A69FEA119F6982C0086AD74 /* EPMainViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -321,6 +326,7 @@
 				3AA2C85219F6659800819443 /* AppDelegate.m in Sources */,
 				3AA2C85519F6659800819443 /* EzyParking.xcdatamodeld in Sources */,
 				3AA2C84F19F6659800819443 /* main.m in Sources */,
+				3A69FEA219F6982C0086AD74 /* EPMainViewController.m in Sources */,
 				3AA2C87C19F6789600819443 /* EPLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

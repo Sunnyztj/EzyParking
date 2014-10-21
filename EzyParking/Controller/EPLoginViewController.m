@@ -13,9 +13,20 @@
 {
     [super viewDidLoad];
     
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    loginView.center = self.view.center;
-    [self.view addSubview:loginView];
+    self.loginView.delegate = self;
+    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
     // do any additional setup after loading the view, typically from a nib
+}
+
+
+- (IBAction)notNowButtonPressed:(id)sender {
+    
+}
+
+- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
+    
+    NSString *theAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
+    [self performSegueWithIdentifier:@"segueGoToMainView" sender:self];
+    
 }
 @end

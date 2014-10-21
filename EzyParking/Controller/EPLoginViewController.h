@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface EPLoginViewController : UIViewController
+@interface EPLoginViewController : UIViewController<FBLoginViewDelegate>
+@property (weak, nonatomic) IBOutlet FBLoginView *loginView;
+@property (weak, nonatomic) IBOutlet UIButton *notNowButton;
+- (IBAction)notNowButtonPressed:(id)sender;
 
 @end

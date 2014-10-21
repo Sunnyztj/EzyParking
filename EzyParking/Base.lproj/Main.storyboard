@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ip5-gQ-8dC">
     <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -16,18 +17,46 @@
                     <view key="view" contentMode="scaleToFill" id="MC1-MW-cdm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gk3-A6-w8B" customClass="FBLoginView">
+                                <rect key="frame" x="139" y="162" width="323" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6p3-5z-D5f">
+                                <rect key="frame" x="139" y="261" width="323" height="30"/>
+                                <state key="normal" title="not now">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="notNowButtonPressed:" destination="SfP-03-eDW" eventType="touchUpInside" id="V8w-7g-A7i"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="gk3-A6-w8B" secondAttribute="centerX" id="4Yw-ho-nPE"/>
+                            <constraint firstAttribute="centerX" secondItem="6p3-5z-D5f" secondAttribute="centerX" id="MO6-B9-X9v"/>
+                            <constraint firstItem="6p3-5z-D5f" firstAttribute="leading" secondItem="MC1-MW-cdm" secondAttribute="leadingMargin" constant="15" id="Pvl-D6-8uW"/>
+                            <constraint firstItem="gk3-A6-w8B" firstAttribute="leading" secondItem="MC1-MW-cdm" secondAttribute="leadingMargin" constant="15" id="fhX-Nm-EEm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gk3-A6-w8B" secondAttribute="trailing" constant="15" id="fiE-Ak-Stj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6p3-5z-D5f" secondAttribute="trailing" constant="15" id="vHN-IL-kaC"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lFm-2A-uYv"/>
+                    <connections>
+                        <outlet property="loginView" destination="gk3-A6-w8B" id="Axt-LM-YZZ"/>
+                        <outlet property="notNowButton" destination="6p3-5z-D5f" id="ncg-sK-Rgl"/>
+                        <segue destination="JKU-jX-J2I" kind="push" identifier="segueGoToMainView" id="wFC-FM-yMw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zj-c2-hOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1174" y="464"/>
         </scene>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="EeK-ed-cvN">
             <objects>
-                <viewController id="JKU-jX-J2I" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EPMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JKU-jX-J2I" customClass="EPMainViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ABo-3r-c5t"/>
                         <viewControllerLayoutGuide type="bottom" id="Qn5-Zt-Zjh"/>
@@ -39,15 +68,31 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oes-Pz-qhR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHO-CK-xvJ">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <items>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="qr5-jX-8Kg"/>
+                                    <barButtonItem title="You Car" id="fNI-pN-oEj"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LTp-O9-Ab1"/>
+                                    <barButtonItem title="Find Parking" id="uc6-76-4Kh"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Naf-f0-QB8"/>
+                                    <barButtonItem title="Setting" id="rw5-5t-cFP"/>
+                                    <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="TIs-Ow-PSF"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Qn5-Zt-Zjh" firstAttribute="top" secondItem="oes-Pz-qhR" secondAttribute="bottom" id="KKK-sX-ooH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="UHO-CK-xvJ" secondAttribute="trailing" constant="-16" id="PkQ-B6-nsq"/>
+                            <constraint firstItem="Qn5-Zt-Zjh" firstAttribute="top" secondItem="UHO-CK-xvJ" secondAttribute="bottom" id="bXs-ng-rck"/>
                             <constraint firstAttribute="trailingMargin" secondItem="oes-Pz-qhR" secondAttribute="trailing" constant="-16" id="cpU-Ot-uaF"/>
                             <constraint firstItem="oes-Pz-qhR" firstAttribute="leading" secondItem="D4Z-b5-FL7" secondAttribute="leadingMargin" constant="-16" id="fxL-he-Ei6"/>
+                            <constraint firstItem="UHO-CK-xvJ" firstAttribute="leading" secondItem="D4Z-b5-FL7" secondAttribute="leadingMargin" constant="-16" id="rsS-hD-TQA"/>
                             <constraint firstItem="oes-Pz-qhR" firstAttribute="top" secondItem="D4Z-b5-FL7" secondAttribute="topMargin" id="wF6-45-UqC"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="UWc-bK-M3D"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axG-ca-bA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
