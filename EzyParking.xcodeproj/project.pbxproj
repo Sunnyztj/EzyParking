@@ -15,6 +15,7 @@
 		3AA2C85D19F6659800819443 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AA2C85C19F6659800819443 /* Images.xcassets */; };
 		3AA2C86019F6659800819443 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA2C85E19F6659800819443 /* LaunchScreen.xib */; };
 		3AA2C86C19F6659800819443 /* EzyParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2C86B19F6659800819443 /* EzyParkingTests.m */; };
+		3AA2C87619F6664300819443 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA2C87519F6664300819443 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		3AA2C86519F6659800819443 /* EzyParkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EzyParkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AA2C86A19F6659800819443 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AA2C86B19F6659800819443 /* EzyParkingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EzyParkingTests.m; sourceTree = "<group>"; };
+		3AA2C87519F6664300819443 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AA2C87619F6664300819443 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +68,7 @@
 		3AA2C84019F6659800819443 = {
 			isa = PBXGroup;
 			children = (
+				3AA2C87519F6664300819443 /* MapKit.framework */,
 				3AA2C84B19F6659800819443 /* EzyParking */,
 				3AA2C86819F6659800819443 /* EzyParkingTests */,
 				3AA2C84A19F6659800819443 /* Products */,
@@ -171,6 +175,11 @@
 				TargetAttributes = {
 					3AA2C84819F6659800819443 = {
 						CreatedOnToolsVersion = 6.0;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					3AA2C86419F6659800819443 = {
 						CreatedOnToolsVersion = 6.0;
