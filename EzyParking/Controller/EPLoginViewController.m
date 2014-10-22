@@ -20,12 +20,12 @@
 
 
 - (IBAction)notNowButtonPressed:(id)sender {
-    
+    [self performSegueWithIdentifier:@"segueGoToMainView" sender:self];
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView{
     
-    NSString *theAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
+//    NSString *theAccessToken = [[[FBSession activeSession] accessTokenData] accessToken];
     [self performSegueWithIdentifier:@"segueGoToMainView" sender:self];
     
 }

@@ -43,6 +43,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lFm-2A-uYv"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="loginView" destination="gk3-A6-w8B" id="Axt-LM-YZZ"/>
                         <outlet property="notNowButton" destination="6p3-5z-D5f" id="ncg-sK-Rgl"/>
