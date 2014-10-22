@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Login View Controller-->
+        <!--Login View-->
         <scene sceneID="RuA-m1-jaJ">
             <objects>
                 <viewController id="SfP-03-eDW" customClass="EPLoginViewController" sceneMemberID="viewController">
@@ -42,8 +42,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="6p3-5z-D5f" secondAttribute="trailing" constant="15" id="vHN-IL-kaC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lFm-2A-uYv"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Login View" id="lFm-2A-uYv"/>
                     <connections>
                         <outlet property="loginView" destination="gk3-A6-w8B" id="Axt-LM-YZZ"/>
                         <outlet property="notNowButton" destination="6p3-5z-D5f" id="ncg-sK-Rgl"/>
@@ -54,7 +53,7 @@
             </objects>
             <point key="canvasLocation" x="1174" y="464"/>
         </scene>
-        <!--Main View Controller-->
+        <!--Main View-->
         <scene sceneID="EeK-ed-cvN">
             <objects>
                 <viewController storyboardIdentifier="EPMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JKU-jX-J2I" customClass="EPMainViewController" sceneMemberID="viewController">
@@ -68,6 +67,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oes-Pz-qhR">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <outlet property="delegate" destination="JKU-jX-J2I" id="zBj-Yv-rO3"/>
+                                </connections>
                             </mapView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UHO-CK-xvJ">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
@@ -93,7 +95,10 @@
                             <constraint firstItem="oes-Pz-qhR" firstAttribute="top" secondItem="D4Z-b5-FL7" secondAttribute="topMargin" id="wF6-45-UqC"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="UWc-bK-M3D"/>
+                    <navigationItem key="navigationItem" title="Main View" id="UWc-bK-M3D"/>
+                    <connections>
+                        <outlet property="mapView" destination="oes-Pz-qhR" id="Qbs-UO-YQx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axG-ca-bA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,7 +107,8 @@
         <!--Navigation Controller-->
         <scene sceneID="ip5-ae-fq4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="ip5-gQ-8dC" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mgu-At-JoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ip5-gQ-8dC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7oM-B9-6KM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -113,7 +119,6 @@
                         <segue destination="SfP-03-eDW" kind="relationship" relationship="rootViewController" id="sxA-D0-bNO"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mgu-At-JoG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="362" y="464"/>
         </scene>

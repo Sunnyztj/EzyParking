@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@interface EPMainViewController : UIViewController
+#import "EPCarParking.h"
+#import <CoreLocation/CoreLocation.h>
+
+@interface EPMainViewController : UIViewController<MKMapViewDelegate, CLLocationManagerDelegate>
+
+@property BOOL hasSetUserLocation;
+@property (strong, nonatomic) EPCarParking *carParking;
+@property (nonatomic, retain) CLLocationManager *myLocationManager;
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end

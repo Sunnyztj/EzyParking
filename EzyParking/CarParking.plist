@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>BigCarParking</string>
+	<key>carparkinginfos</key>
+	<array>
+		<dict>
+			<key>name</key>
+			<string>Wyatt Street</string>
+			<key>address</key>
+			<string>Stockley Lane, 17 Stockley Lane, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Wyatt%20Street.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Topham Mall</string>
+			<key>address</key>
+			<string>Topham Mall, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Topham%20Mall.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Rundle Street</string>
+			<key>address</key>
+			<string>163–185 Rundle Street, Adelaide CBD SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Rundle%20Street.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Pirie Flinders</string>
+			<key>address</key>
+			<string>163–185 Rundle Street, Adelaide CBD SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Pirie-Flinders.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Light Square</string>
+			<key>address</key>
+			<string>189 Hindley St, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Light%20Square.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Grote Street</string>
+			<key>address</key>
+			<string>82 Grote St, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Grote%20Street.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Gawler Place</string>
+			<key>address</key>
+			<string>9/17 Gawler Pl, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Gawler%20Place.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Frome</string>
+			<key>address</key>
+			<string>15 Frome St, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Frome.xml</string>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Central Market</string>
+			<key>address</key>
+			<string>44-60 Gouger St, Adelaide SA 5000</string>
+			<key>xml</key>
+			<string>http://opendata.adelaidecitycouncil.com/upark/UPark%20Space%20Availability%20by%20Carpark%20-%20Central%20Market.xml</string>
+		</dict>
+	</array>
+</dict>
+</plist>

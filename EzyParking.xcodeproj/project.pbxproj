@@ -18,6 +18,9 @@
 		3AA2C86C19F6659800819443 /* EzyParkingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2C86B19F6659800819443 /* EzyParkingTests.m */; };
 		3AA2C87619F6664300819443 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AA2C87519F6664300819443 /* MapKit.framework */; };
 		3AA2C87C19F6789600819443 /* EPLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2C87B19F6789600819443 /* EPLoginViewController.m */; };
+		3ADD606C19F7D70F00769CF8 /* EPCarParking.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD606B19F7D70F00769CF8 /* EPCarParking.m */; };
+		3ADD606E19F7DC7900769CF8 /* CarParking.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3ADD606D19F7DC7900769CF8 /* CarParking.plist */; };
+		3ADD607319F7E61100769CF8 /* EPCarParkingInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ADD607219F7E61100769CF8 /* EPCarParkingInfo.m */; };
 		763A0D94C5393D4F374C9DB7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A8BEC83A1B97E9E65DFB6711 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +53,11 @@
 		3AA2C87519F6664300819443 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3AA2C87A19F6789600819443 /* EPLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPLoginViewController.h; path = Controller/EPLoginViewController.h; sourceTree = "<group>"; };
 		3AA2C87B19F6789600819443 /* EPLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPLoginViewController.m; path = Controller/EPLoginViewController.m; sourceTree = "<group>"; };
+		3ADD606A19F7D70F00769CF8 /* EPCarParking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPCarParking.h; path = Model/EPCarParking.h; sourceTree = "<group>"; };
+		3ADD606B19F7D70F00769CF8 /* EPCarParking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPCarParking.m; path = Model/EPCarParking.m; sourceTree = "<group>"; };
+		3ADD606D19F7DC7900769CF8 /* CarParking.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CarParking.plist; sourceTree = "<group>"; };
+		3ADD607119F7E61100769CF8 /* EPCarParkingInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EPCarParkingInfo.h; path = Model/EPCarParkingInfo.h; sourceTree = "<group>"; };
+		3ADD607219F7E61100769CF8 /* EPCarParkingInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EPCarParkingInfo.m; path = Model/EPCarParkingInfo.m; sourceTree = "<group>"; };
 		576029B169FBC8E44CB76FA4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9532BF59A34A00B9AEEC3B5E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A8BEC83A1B97E9E65DFB6711 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +134,7 @@
 				3AA2C85019F6659800819443 /* AppDelegate.h */,
 				3AA2C85119F6659800819443 /* AppDelegate.m */,
 				3AA2C84D19F6659800819443 /* Info.plist */,
+				3ADD606D19F7DC7900769CF8 /* CarParking.plist */,
 				3AA2C84E19F6659800819443 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -169,6 +178,10 @@
 		3AA2C87919F66EC800819443 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3ADD606A19F7D70F00769CF8 /* EPCarParking.h */,
+				3ADD606B19F7D70F00769CF8 /* EPCarParking.m */,
+				3ADD607119F7E61100769CF8 /* EPCarParkingInfo.h */,
+				3ADD607219F7E61100769CF8 /* EPCarParkingInfo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -270,6 +283,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ADD606E19F7DC7900769CF8 /* CarParking.plist in Resources */,
 				3AA2C85B19F6659800819443 /* Main.storyboard in Resources */,
 				3AA2C86019F6659800819443 /* LaunchScreen.xib in Resources */,
 				3AA2C85D19F6659800819443 /* Images.xcassets in Resources */,
@@ -323,10 +337,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ADD606C19F7D70F00769CF8 /* EPCarParking.m in Sources */,
 				3AA2C85219F6659800819443 /* AppDelegate.m in Sources */,
 				3AA2C85519F6659800819443 /* EzyParking.xcdatamodeld in Sources */,
 				3AA2C84F19F6659800819443 /* main.m in Sources */,
 				3A69FEA219F6982C0086AD74 /* EPMainViewController.m in Sources */,
+				3ADD607319F7E61100769CF8 /* EPCarParkingInfo.m in Sources */,
 				3AA2C87C19F6789600819443 /* EPLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
