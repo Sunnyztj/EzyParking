@@ -70,9 +70,15 @@
     }
     [self setupCarParkingAnnotation];
     [self performSelector:@selector(setupCarParkingAnnotation) withObject:nil afterDelay:2.0];
+    [NSTimer scheduledTimerWithTimeInterval:300 target:self selector:@selector(setupCarParkingAnnotation) userInfo:nil repeats:YES];
 }
 
 - (void)setupCarParkingAnnotation{
+    
+    NSArray *existingpoints = self.mapView.annotations;
+    
+    if ([existingpoints count])
+        [self.mapView removeAnnotations:existingpoints];
     
     for (id info in _carParking.info) {
         if (info != nil) {
