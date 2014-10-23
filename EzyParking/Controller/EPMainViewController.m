@@ -11,7 +11,8 @@
 #define SEARCH_RADIUS_IN_M 6000
 #define SEARCH_RADIUS_PLUS_BUFFER SEARCH_RADIUS_IN_M * 1.43
 @interface EPMainViewController ()
-
+@property (nonatomic, strong) CLGeocoder *geocoder;
+@property (nonatomic, strong) MKPlacemark *placemark;
 @end
 
 @implementation EPMainViewController
@@ -34,7 +35,8 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [self.myLocationManager startUpdatingLocation];
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.myLocationManager.location.coordinate, SEARCH_RADIUS_PLUS_BUFFER, SEARCH_RADIUS_PLUS_BUFFER);
+    [self loadCouponsWithRegion:region];
 }
 
 - (void)setupMainViewController {
@@ -45,6 +47,9 @@
         _carParking = carParking;
     }
     
+    // Create a geocoder and save it for later.
+    self.geocoder = [[CLGeocoder alloc] init];
+    
     self.mapView.delegate = self;
     if ([CLLocationManager locationServicesEnabled]){
         self.myLocationManager = [[CLLocationManager alloc] init];
@@ -52,6 +57,8 @@
         self.myLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
 
         [self.myLocationManager startUpdatingLocation];
+        [self.myLocationManager requestAlwaysAuthorization];
+        [self.myLocationManager requestWhenInUseAuthorization];
     } else {
         /* Location services are not enabled.
          Take appropriate action: for instance, prompt the
@@ -59,8 +66,6 @@
         NSLog(@"Location services are not enabled");
     }
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(self.myLocationManager.location.coordinate, SEARCH_RADIUS_PLUS_BUFFER, SEARCH_RADIUS_PLUS_BUFFER);
-    [self loadCouponsWithRegion:region];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -88,20 +93,6 @@
     NSLog(@"Changing Region %f %f", mapView.region.center.latitude, mapView.region.center.longitude);
 }
 
-- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-{
-    
-    if(self.hasSetUserLocation == NO)
-    {
-        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, SEARCH_RADIUS_PLUS_BUFFER, SEARCH_RADIUS_PLUS_BUFFER);
-        
-        self.hasSetUserLocation = YES;
-        
-//        [self.mapView setRegion:region animated:YES];
-        [self loadCouponsWithRegion:region];
-    }
-}
-
 - (void) loadCouponsWithRegion:(MKCoordinateRegion) region
 {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 500 * NSEC_PER_MSEC);
@@ -110,4 +101,51 @@
                     }
                 );
 }
+
+// Wait for location callbacks
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    NSLog(@"%@", [locations lastObject]);
+}
+
+
+- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+{
+    // Center the map the first time we get a real location change.
+    static dispatch_once_t centerMapFirstTime;
+    
+    if ((userLocation.coordinate.latitude != 0.0) && (userLocation.coordinate.longitude != 0.0)) {
+        dispatch_once(&centerMapFirstTime, ^{
+            [self.mapView setCenterCoordinate:userLocation.coordinate animated:YES];
+        });
+    }
+    
+    // Lookup the information for the current location of the user.
+    [self.geocoder reverseGeocodeLocation:self.mapView.userLocation.location completionHandler:^(NSArray *placemarks, NSError *error) {
+        if ((placemarks != nil) && (placemarks.count > 0)) {
+            // If the placemark is not nil then we have at least one placemark. Typically there will only be one.
+            _placemark = [placemarks objectAtIndex:0];
+            
+            // we have received our current location, so enable the "Get Current Address" button
+//            [self.getAddressButton setEnabled:YES];
+        }
+        else {
+            // Handle the nil case if necessary.
+        }
+    }];
+}
+
+//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+//{
+//    
+//    if(self.hasSetUserLocation == NO)
+//    {
+//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, SEARCH_RADIUS_PLUS_BUFFER, SEARCH_RADIUS_PLUS_BUFFER);
+//        
+//        self.hasSetUserLocation = YES;
+//        
+//        //        [self.mapView setRegion:region animated:YES];
+//        [self loadCouponsWithRegion:region];
+//    }
+//}
 @end
