@@ -7,6 +7,9 @@
 //
 
 #import "EPMainViewController.h"
+#import "EPAnnotation.h"
+#import "EPCarParkingInfo.h"
+#import "XMLReader.h"
 
 #define SEARCH_RADIUS_IN_M 6000
 #define SEARCH_RADIUS_PLUS_BUFFER SEARCH_RADIUS_IN_M * 1.43
@@ -57,7 +60,7 @@
         self.myLocationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
 
         [self.myLocationManager startUpdatingLocation];
-        [self.myLocationManager requestAlwaysAuthorization];
+//        [self.myLocationManager requestAlwaysAuthorization];
         [self.myLocationManager requestWhenInUseAuthorization];
     } else {
         /* Location services are not enabled.
@@ -65,7 +68,40 @@
          user to enable the location services */
         NSLog(@"Location services are not enabled");
     }
+    [self setupCarParkingAnnotation];
+    [self performSelector:@selector(setupCarParkingAnnotation) withObject:nil afterDelay:2.0];
+}
+
+- (void)setupCarParkingAnnotation{
     
+    for (id info in _carParking.info) {
+        if (info != nil) {
+            if ([info isKindOfClass:[EPCarParkingInfo class]]) {
+                EPCarParkingInfo *carparkinginfo = (EPCarParkingInfo *)info;
+                NSURL *URL = [NSURL URLWithString:carparkinginfo.xml];
+                NSData *data = [[NSData alloc] initWithContentsOfURL:URL];
+                NSError *error = nil;
+                
+                NSDictionary *dictionary = [XMLReader dictionaryForXMLData:data error:&error];
+                NSString *subTitle = [[[[[dictionary objectForKey:@"Report"] objectForKey:@"table1"] objectForKey:@"CarparkName_Collection"] objectForKey:@"CarparkName"] objectForKey:@"Textbox32"];
+                EPAnnotation *annotation = [[EPAnnotation alloc] initWithCoordinates:carparkinginfo.coordinate
+                                                                               title:carparkinginfo.name
+                                                                            subTitle:subTitle];
+                NSNumber *restNumber = [NSNumber numberWithInteger:[subTitle integerValue]];
+                if (restNumber <= [NSNumber numberWithInt:60]) {
+                    annotation.pinColor = MKPinAnnotationColorRed;
+                } else if (restNumber <= [NSNumber numberWithInt:200]) {
+                    annotation.pinColor = MKPinAnnotationColorPurple;
+                } else {
+                    annotation.pinColor = MKPinAnnotationColorGreen;
+                }
+
+                [self.mapView addAnnotation:annotation];
+            }
+
+            
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,7 +141,7 @@
 // Wait for location callbacks
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    NSLog(@"%@", [locations lastObject]);
+//    NSLog(@"%@", [locations lastObject]);
 }
 
 
@@ -135,17 +171,49 @@
     }];
 }
 
-//- (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
-//{
-//    
-//    if(self.hasSetUserLocation == NO)
-//    {
-//        MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(userLocation.location.coordinate, SEARCH_RADIUS_PLUS_BUFFER, SEARCH_RADIUS_PLUS_BUFFER);
-//        
-//        self.hasSetUserLocation = YES;
-//        
-//        //        [self.mapView setRegion:region animated:YES];
-//        [self loadCouponsWithRegion:region];
-//    }
-//}
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation{
+    MKAnnotationView *result = nil;
+    if ( ![annotation isKindOfClass:[EPAnnotation class]]) {
+        return result;
+    }
+    
+    if (![mapView isEqual: self.mapView]) {
+        return result;
+    }
+    
+    EPAnnotation *senderAnnotation = (EPAnnotation *)annotation;
+    
+    /* First typecast the annotation for which the Map View has
+     fired this delegate message */
+    /* Using the class method we have defined in our custom
+     annotation class, we will attempt to get a reusable
+     identifier for the pin we are about
+     to create */
+    NSString *pinReusableIdentifier = [EPAnnotation reusableIdentifierforPinColor:senderAnnotation.pinColor];
+    
+    /* Using the identifier we retrieved above, we will
+     attempt to reuse a pin in the sender Map View */
+    MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:pinReusableIdentifier];
+    
+    if (annotationView == nil){
+        /* If we fail to reuse a pin, then we will create one */
+        annotationView = [[MKPinAnnotationView alloc]
+                          initWithAnnotation:senderAnnotation
+                          reuseIdentifier:pinReusableIdentifier];
+        /* Make sure we can see the callouts on top of
+         each pin in case we have assigned title and/or
+         subtitle to each pin */
+        [annotationView setCanShowCallout:YES];
+    }
+    /* Now make sure, whether we have reused a pin or not, that
+     the color of the pin matches the color of the annotation */
+    annotationView.pinColor = senderAnnotation.pinColor;
+    
+    result = annotationView;
+    
+    return result;
+}
+
+
+
 @end
